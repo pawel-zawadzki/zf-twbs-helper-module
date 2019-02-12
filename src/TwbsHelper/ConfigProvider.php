@@ -12,8 +12,8 @@ class ConfigProvider
 {
     public function __invoke() : array
     {
-        $cfg = require_once __DIR__ . '/../../config/module.config.php';
-        $cfg['dependencies'] = $cfg['service_manager'];
+        $cfg = (array) require_once __DIR__ . '/../../config/module.config.php';
+        $cfg['dependencies'] = (array) ($cfg['service_manager'] ?? []);
 
         return $cfg;
     }
